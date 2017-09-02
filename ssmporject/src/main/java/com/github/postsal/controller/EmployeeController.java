@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -23,6 +24,15 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @RequestMapping("/emps")
+    @ResponseBody
+    public PageInfo getEmpsWithJson(@RequestParam(value = "pageNumber" ,defaultValue = "1") Integer pageNumber){
+        PageHelper.startPage(pageNumber,5);
+
+        List<Employee> employees = employeeService.getAll();
+
+        return new PageInfo(employees,5);
+
+    }
     public String getEmps(@RequestParam(value = "pageNumber" ,defaultValue = "1") Integer pageNumber, ModelMap model){
         PageHelper.startPage(pageNumber,5);
 

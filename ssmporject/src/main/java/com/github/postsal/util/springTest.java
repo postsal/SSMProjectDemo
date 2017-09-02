@@ -50,6 +50,8 @@ public class springTest {
             mapper.insertSelective(new Employee("jerry" ,uid+"@qq.com","1",2));
         }*/
         List<Employee> employees = employeeService.getAll();
+        System.out.println(employees.get(1).getEmail());
+        System.out.println(employees.get(1).getLastName());
         System.out.println(employees.get(1).getdId());
 
     }
