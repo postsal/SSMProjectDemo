@@ -13,6 +13,16 @@ public class Employee {
 
     private Department department;
 
+    public Employee() {
+    }
+
+    public Employee(String lastName, String email, String gender, Integer dId) {
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.dId = dId;
+    }
+
     public Department getDepartment() {
         return department;
     }
